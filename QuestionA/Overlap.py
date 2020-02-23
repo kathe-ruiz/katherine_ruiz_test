@@ -8,6 +8,9 @@ class Overlap:
 
     def is_iverlap(self):
         if self.validate_input():
+            """
+            check if lines are separated
+            """
             if (
                 self.line1[0] < self.line2[0]
                 and self.line1[1] < self.line2[0]
