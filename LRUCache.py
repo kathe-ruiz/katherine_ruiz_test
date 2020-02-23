@@ -1,10 +1,12 @@
 import collections
 import threading
 
+
 class LRUCache(object):
     items = {}
     capacity = 0
     my_list = collections.deque([])
+
     def __init__(self, capacity):
         """
         :type capacity: int
@@ -18,7 +20,6 @@ class LRUCache(object):
             del self.items[key]
             self.my_list.remove(key)
 
-
     def get(self, key):
         """
         :type key: int
@@ -30,9 +31,8 @@ class LRUCache(object):
             self.my_list.remove(key)
             self.my_list.appendleft(key)
             return self.items[key]
-           
+
         return -1
-        
 
     def put(self, key, value, time_limit=0):
         """
@@ -51,12 +51,12 @@ class LRUCache(object):
                 self.my_list.remove(key)
                 self.my_list.appendleft(key)
             self.items[key] = value
-                
+
         """
         If the dict items are greater than capacity then I pop the last item
         and delete the item from dict
-        """        
-        if len(self.items) == self.capacity+1 and self.my_list:
+        """
+        if len(self.items) == self.capacity + 1 and self.my_list:
             key = self.my_list.pop()
             if key in self.items:
                 del self.items[key]
@@ -65,8 +65,6 @@ class LRUCache(object):
         """
         if time_limit > 0:
             threading.Timer(time_limit, self.remove_expired_item, [key]).start()
-    
+
     def get_all(self):
         return self.items, self.my_list
-        
-        
