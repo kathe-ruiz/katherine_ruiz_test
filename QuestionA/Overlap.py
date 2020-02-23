@@ -8,9 +8,19 @@ class Overlap:
 
     def is_iverlap(self):
         if self.validate_input():
-            if self.line1[0] < self.line2[0] and self.line1[1] < self.line2[0]:
+            if (
+                self.line1[0] < self.line2[0]
+                and self.line1[1] < self.line2[0]
+                and self.line1[0] < self.line2[1]
+                and self.line1[1] < self.line2[1]
+            ):
                 return False
-            if self.line1[0] > self.line2[1] and self.line1[1] > self.line2[1]:
+            if (
+                self.line1[0] > self.line2[1]
+                and self.line1[1] > self.line2[1]
+                and self.line1[0] > self.line2[0]
+                and self.line1[1] > self.line2[0]
+            ):
                 return False
         else:
             return False
@@ -19,11 +29,6 @@ class Overlap:
     def validate_input(self):
         if len(self.line1) != 2 or len(self.line2) != 2:
             print("Wrong Inpunt: lines has to be sizes of 2")
-            return False
-        if self.line1[0] > self.line1[1] or self.line2[0] > self.line2[1]:
-            print(
-                "Wrong Inpunt: First point of line has to be smaller than second point"
-            )
             return False
         return True
 

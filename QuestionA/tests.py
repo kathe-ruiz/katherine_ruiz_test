@@ -16,7 +16,7 @@ class OverlapTest(unittest.TestCase):
         self.assertFalse(overlap.is_iverlap())
         overlap = Overlap([-5, -3], [-2, -1])
         self.assertFalse(overlap.is_iverlap())
-        overlap = Overlap([0, 0], [4, 0])
+        overlap = Overlap([3, -3], [5, 4])
         self.assertFalse(overlap.is_iverlap())
 
     def test_overlap_true(self):
@@ -29,6 +29,12 @@ class OverlapTest(unittest.TestCase):
         overlap = Overlap([-5, 6], [1, 2])
         self.assertTrue(overlap.is_iverlap())
         overlap = Overlap([0, 0], [0, 0])
+        self.assertTrue(overlap.is_iverlap())
+        overlap = Overlap([-1, -4], [-3, -6])
+        self.assertTrue(overlap.is_iverlap())
+        overlap = Overlap([0, 0], [4, 0])
+        self.assertTrue(overlap.is_iverlap())
+        overlap = Overlap([-1, 3], [3, 6])
         self.assertTrue(overlap.is_iverlap())
 
 
